@@ -3,248 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUKEICHEVA | Actress & Director</title>
+    <title>Наталья Лукеичева | LUKEICHEVA</title>
     
-    <!-- Подключаем люксовые шрифты от Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        /* БАЗОВЫЕ НАСТРОЙКИ (сброс отступов) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #fcfcfc; color: #111; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, .logo { font-family: 'Cormorant Garamond', serif; }
 
-        body {
-            background-color: #fcfcfc; /* Очень-очень светлый бежевый, как страницы журнала */
-            color: #111;
-            font-family: 'Montserrat', sans-serif; /* Базовый шрифт */
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .logo {
-            font-family: 'Cormorant Garamond', serif; /* Люксовый шрифт с засечками */
-            font-weight: 400;
-        }
-
-        /* ----- ШАПКА И ЛОГОТИП ----- */
+        /* ----- ШАПКА И МЕНЮ ----- */
         header {
-            position: absolute; /* Лежит поверх видео */
-            top: 0;
-            width: 100%;
+            position: absolute;
+            top: 0; width: 100%;
             padding: 30px 50px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             z-index: 10;
         }
 
+        /* Переключатель языков (правый верхний угол) */
+        .lang-switch {
+            position: absolute;
+            top: 30px; right: 50px;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+        .lang-switch a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .lang-switch a.active, .lang-switch a:hover { color: #fff; font-weight: 600; }
+
         .logo {
-            font-size: 38px;
+            font-size: 42px;
             color: #fff;
-            letter-spacing: 12px; /* Широкое расстояние между буквами — фишка Gucci/Dior */
+            letter-spacing: 14px;
             text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        /* Навигация (Ссылки) */
+        .main-menu {
+            display: flex;
+            gap: 30px; /* Расстояние между ссылками */
+        }
+        .main-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .main-menu a:hover {
+            border-bottom: 1px solid #fff; /* Подчеркивание при наведении */
         }
 
         /* ----- ПЕРВЫЙ ЭКРАН (ВИДЕО) ----- */
         .hero {
             position: relative;
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center; justify-content: center;
             overflow: hidden;
         }
 
         .hero video {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Видео растягивается, обрезая края, чтобы заполнить экран */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
             z-index: 1;
         }
 
-        /* Легкое затемнение поверх видео, чтобы текст лучше читался */
+        /* Градиентное затемнение (чтобы меню и нижний текст всегда читались поверх любого видео) */
         .video-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            color: #fff;
-            margin-top: 50px;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        /* ----- БЛОК "МАНИФЕСТ" (Стиль Dior) ----- */
-        .statement {
-            padding: 120px 20px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .statement h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .statement p {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        /* ----- РАЗДЕЛЕНИЕ: АКТРИСА И РЕЖИССЕР ----- */
-        .portfolio-split {
-            display: flex;
-            height: 80vh; /* Занимает 80% высоты экрана */
-        }
-
-        .split-item {
-            flex: 1;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-decoration: none;
-            overflow: hidden;
-            background-color: #222; /* Заглушка, если нет фото */
-        }
-
-        /* Здесь будут лежать фото для блоков */
-        .actress-bg { background: url('actress.jpg') center/cover; }
-        .director-bg { background: url('director.jpg') center/cover; }
-
-        .split-overlay {
-            position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            transition: background 0.5s ease;
-        }
-
-        /* Эффект при наведении мышки */
-        .split-item:hover .split-overlay {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .split-item h3 {
-            position: relative;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.7) 100%);
             z-index: 2;
-            font-size: 48px;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
         }
 
-        .split-item span {
-            position: relative;
-            z-index: 2;
-            font-size: 13px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #fff;
-            padding-bottom: 5px;
-        }
-
-        /* ----- ПОДВАЛ (ФУТЕР) ----- */
-        footer {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #111;
+        /* ----- НИЖНЯЯ НАДПИСЬ НА ВИДЕО ----- */
+        .hero-bottom-text {
+            position: absolute;
+            bottom: 40px; /* Отступ снизу */
+            z-index: 3;
             color: #fff;
+            font-size: 16px;
+            font-weight: 600; /* Сделали пожирнее */
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-align: center;
         }
 
-        footer p {
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: #888;
-            margin-bottom: 10px;
+        /* Временные блоки-заглушки для разделов, чтобы меню работало при клике */
+        section.content-block {
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
         }
+        section.content-block h2 { font-size: 36px; margin-bottom: 20px; }
 
-        /* Мобильная адаптация */
         @media (max-width: 768px) {
-            .logo { font-size: 24px; letter-spacing: 8px; }
-            .statement h2 { font-size: 32px; }
-            .portfolio-split { flex-direction: column; height: 100vh; }
+            .logo { font-size: 28px; letter-spacing: 8px; margin-bottom: 15px; }
+            .main-menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .lang-switch { position: static; margin-bottom: 15px; }
+            .hero-bottom-text { font-size: 13px; letter-spacing: 5px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка с именем -->
+    <!-- Шапка, Меню и Языки -->
     <header>
+        <div class="lang-switch">
+            <span style="color:#fff">RU</span> / <a href="en.html">EN</a>
+        </div>
         <div class="logo">LUKEICHEVA</div>
+        <nav class="main-menu">
+            <a href="#about">Биография</a>
+            <a href="#gallery">Портфолио</a>
+            <a href="#acting">Актерские работы</a>
+            <a href="#directing">Режиссура</a>
+            <a href="#writing">Сценарии и тексты</a>
+        </nav>
     </header>
 
-    <!-- Первый экран: Видео на фоне -->
+    <!-- Видео -->
     <section class="hero">
-        <!-- 
-        ВАЖНО: В строке ниже замените 'showreel.mp4' на название вашего видео.
-        Атрибуты autoplay (автозапуск), muted (без звука), loop (зациклено), playsinline (для айфонов) 
-        -->
+        <!-- СЛОВО loop отвечает за бесконечный повтор! -->
         <video autoplay loop muted playsinline id="bg-video">
             <source src="showreel.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
         </video>
         <div class="video-overlay"></div>
-        <div class="hero-content">
-            <!-- Подпись под логотипом, если нужна. Можно удалить -->
-            <p class="hero-subtitle">Actress & Director</p>
-        </div>
-    </section>
-
-    <!-- Блок "Манифест" в стиле Dior -->
-    <section class="statement">
-        <h2>Искусство в каждом кадре.<br>Жизнь в каждой роли.</h2>
-        <p>Для меня кино и театр — это не просто игра. Это глубокое исследование человеческой души через призму актерского мастерства и режиссерского видения.</p>
-    </section>
-
-    <!-- Блок выбора направления (Актриса / Режиссер) -->
-    <section class="portfolio-split">
-        <!-- Левая часть -->
-        <a href="#" class="split-item actress-bg">
-            <div class="split-overlay"></div>
-            <h3>Актриса</h3>
-            <span>Смотреть портфолио</span>
-        </a>
         
-        <!-- Правая часть -->
-        <a href="#" class="split-item director-bg">
-            <div class="split-overlay"></div>
-            <h3>Режиссер</h3>
-            <span>Смотреть проекты</span>
-        </a>
+        <!-- Надпись снизу -->
+        <div class="hero-bottom-text">ACTRESS & DIRECTOR</div>
     </section>
 
-    <!-- Подвал сайта -->
-    <footer>
-        <p>LUKEICHEVA © 2024</p>
-        <p>По вопросам сотрудничества: agent@example.com</p>
-    </footer>
+    <!-- Разделы (пока пустые, для структуры) -->
+    <section id="about" class="content-block">
+        <h2>Наталья Лукеичева</h2>
+        <p>Здесь будет биография актрисы и режиссера...</p>
+    </section>
+
+    <section id="gallery" class="content-block">
+        <h2>Портфолио</h2>
+        <p>Здесь будут фотографии...</p>
+    </section>
+
+    <!-- и так далее -->
 
 </body>
 </html>
