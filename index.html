@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        /* Базовые настройки и плавный скролл для меню */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { background-color: #fcfcfc; color: #111; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
         h1, h2, h3, .logo { font-family: 'Cormorant Garamond', serif; }
 
@@ -19,111 +21,95 @@
             position: absolute;
             top: 0; width: 100%;
             padding: 30px 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
             z-index: 10;
         }
 
-        /* Переключатель языков (правый верхний угол) */
         .lang-switch {
             position: absolute;
             top: 30px; right: 50px;
-            font-size: 12px;
-            letter-spacing: 2px;
+            font-size: 12px; letter-spacing: 2px;
         }
-        .lang-switch a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .lang-switch a.active, .lang-switch a:hover { color: #fff; font-weight: 600; }
+        .lang-switch a { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; }
+        .lang-switch a:hover { color: #fff; font-weight: 600; }
 
         .logo {
-            font-size: 42px;
-            color: #fff;
-            letter-spacing: 14px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
+            font-size: 42px; color: #fff; letter-spacing: 14px;
+            text-transform: uppercase; margin-bottom: 25px;
         }
 
-        /* Навигация (Ссылки) */
-        .main-menu {
-            display: flex;
-            gap: 30px; /* Расстояние между ссылками */
-        }
+        .main-menu { display: flex; gap: 30px; }
         .main-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 500;
-            padding-bottom: 5px;
-            border-bottom: 1px solid transparent;
-            transition: 0.3s;
+            color: #fff; text-decoration: none; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 3px; font-weight: 500;
+            padding-bottom: 5px; border-bottom: 1px solid transparent; transition: 0.3s;
         }
-        .main-menu a:hover {
-            border-bottom: 1px solid #fff; /* Подчеркивание при наведении */
-        }
+        .main-menu a:hover { border-bottom: 1px solid #fff; }
 
         /* ----- ПЕРВЫЙ ЭКРАН (ВИДЕО) ----- */
         .hero {
-            position: relative;
-            width: 100vw; height: 100vh;
-            display: flex;
-            align-items: center; justify-content: center;
-            overflow: hidden;
+            position: relative; width: 100vw; height: 100vh;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
         }
 
         .hero video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 1;
         }
 
-        /* Градиентное затемнение (чтобы меню и нижний текст всегда читались поверх любого видео) */
         .video-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.7) 100%);
             z-index: 2;
         }
 
-        /* ----- НИЖНЯЯ НАДПИСЬ НА ВИДЕО ----- */
         .hero-bottom-text {
-            position: absolute;
-            bottom: 40px; /* Отступ снизу */
-            z-index: 3;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600; /* Сделали пожирнее */
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            text-align: center;
+            position: absolute; bottom: 40px; z-index: 3; color: #fff;
+            font-size: 16px; font-weight: 600; letter-spacing: 8px;
+            text-transform: uppercase; text-align: center;
         }
 
-        /* Временные блоки-заглушки для разделов, чтобы меню работало при клике */
+        /* ----- БЛОК С ДВУМЯ ФОТОГРАФИЯМИ (Без текста) ----- */
+        .photo-split {
+            display: flex;
+            height: 80vh; /* Высота блока - 80% от высоты экрана */
+            width: 100%;
+        }
+
+        .photo-item {
+            flex: 1; /* Занимают по 50% ширины */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Ссылки на ваши фото */
+        .actress-photo { background-image: url('actress.jpg'); background-color: #222; }
+        .director-photo { background-image: url('director.jpg'); background-color: #333; }
+
+        /* ----- ЗАГЛУШКИ ДЛЯ ОСТАЛЬНЫХ РАЗДЕЛОВ ----- */
         section.content-block {
-            padding: 100px 20px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
+            padding: 100px 20px; text-align: center;
+            max-width: 800px; margin: 0 auto;
         }
-        section.content-block h2 { font-size: 36px; margin-bottom: 20px; }
+        section.content-block h2 { font-size: 36px; margin-bottom: 30px; letter-spacing: 2px; }
+        section.content-block p { font-size: 15px; color: #555; line-height: 1.8; font-weight: 300; }
 
+        /* Мобильная адаптация */
         @media (max-width: 768px) {
             .logo { font-size: 28px; letter-spacing: 8px; margin-bottom: 15px; }
             .main-menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .lang-switch { position: static; margin-bottom: 15px; }
             .hero-bottom-text { font-size: 13px; letter-spacing: 5px; }
+            
+            /* На телефоне фото встают друг под другом */
+            .photo-split { flex-direction: column; height: 100vh; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка, Меню и Языки -->
+    <!-- Шапка -->
     <header>
         <div class="lang-switch">
             <span style="color:#fff">RU</span> / <a href="en.html">EN</a>
@@ -140,28 +126,54 @@
 
     <!-- Видео -->
     <section class="hero">
-        <!-- СЛОВО loop отвечает за бесконечный повтор! -->
         <video autoplay loop muted playsinline id="bg-video">
             <source src="showreel.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
-        
-        <!-- Надпись снизу -->
         <div class="hero-bottom-text">ACTRESS & DIRECTOR</div>
     </section>
 
-    <!-- Разделы (пока пустые, для структуры) -->
+    <!-- ДВЕ ФОТОГРАФИИ -->
+    <section class="photo-split">
+        <div class="photo-item actress-photo"></div>
+        <div class="photo-item director-photo"></div>
+    </section>
+
+    <!-- РАЗДЕЛ: БИОГРАФИЯ -->
     <section id="about" class="content-block">
         <h2>Наталья Лукеичева</h2>
-        <p>Здесь будет биография актрисы и режиссера...</p>
+        <p>Актриса театра и кино, режиссер. Текст биографии будет располагаться здесь. В этом блоке мы красиво оформим историю, жизненный путь и главные творческие принципы.</p>
     </section>
 
+    <!-- РАЗДЕЛ: ПОРТФОЛИО -->
     <section id="gallery" class="content-block">
         <h2>Портфолио</h2>
-        <p>Здесь будут фотографии...</p>
+        <p>Здесь будет сетка из профессиональных актерских фотографий (headshots и в полный рост).</p>
     </section>
 
-    <!-- и так далее -->
+    <!-- РАЗДЕЛ: АКТЕРСКИЕ РАБОТЫ -->
+    <section id="acting" class="content-block">
+        <h2>Актерские работы</h2>
+        <p>Фильмография и театральные работы списком: Год — Название — Роль — Режиссер.</p>
+    </section>
+
+    <!-- РАЗДЕЛ: РЕЖИССУРА -->
+    <section id="directing" class="content-block">
+        <h2>Режиссура</h2>
+        <p>Информация о режиссерских проектах, спектаклях или фильмах.</p>
+    </section>
+
+    <!-- РАЗДЕЛ: СЦЕНАРИИ И ТЕКСТЫ -->
+    <section id="writing" class="content-block">
+        <h2>Сценарии и тексты</h2>
+        <p>Авторские материалы, мысли, сценарии и наработки.</p>
+    </section>
+
+    <!-- ПОДВАЛ (Контакты) -->
+    <footer style="background-color: #111; color: #fff; text-align: center; padding: 60px 20px;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 24px; letter-spacing: 4px; margin-bottom: 20px;">LUKEICHEVA</p>
+        <p style="font-size: 12px; letter-spacing: 2px; color: #888;">© 2024 Все права защищены</p>
+    </footer>
 
 </body>
 </html>
