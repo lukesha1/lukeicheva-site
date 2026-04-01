@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUKEICHEVA | Actress & Director</title>
+    
+    <!-- Подключаем люксовые шрифты от Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* БАЗОВЫЕ НАСТРОЙКИ (сброс отступов) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fcfcfc; /* Очень-очень светлый бежевый, как страницы журнала */
+            color: #111;
+            font-family: 'Montserrat', sans-serif; /* Базовый шрифт */
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Cormorant Garamond', serif; /* Люксовый шрифт с засечками */
+            font-weight: 400;
+        }
+
+        /* ----- ШАПКА И ЛОГОТИП ----- */
+        header {
+            position: absolute; /* Лежит поверх видео */
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 38px;
+            color: #fff;
+            letter-spacing: 12px; /* Широкое расстояние между буквами — фишка Gucci/Dior */
+            text-transform: uppercase;
+        }
+
+        /* ----- ПЕРВЫЙ ЭКРАН (ВИДЕО) ----- */
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Видео растягивается, обрезая края, чтобы заполнить экран */
+            z-index: 1;
+        }
+
+        /* Легкое затемнение поверх видео, чтобы текст лучше читался */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+            margin-top: 50px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* ----- БЛОК "МАНИФЕСТ" (Стиль Dior) ----- */
+        .statement {
+            padding: 120px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .statement h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .statement p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ----- РАЗДЕЛЕНИЕ: АКТРИСА И РЕЖИССЕР ----- */
+        .portfolio-split {
+            display: flex;
+            height: 80vh; /* Занимает 80% высоты экрана */
+        }
+
+        .split-item {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            overflow: hidden;
+            background-color: #222; /* Заглушка, если нет фото */
+        }
+
+        /* Здесь будут лежать фото для блоков */
+        .actress-bg { background: url('actress.jpg') center/cover; }
+        .director-bg { background: url('director.jpg') center/cover; }
+
+        .split-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            transition: background 0.5s ease;
+        }
+
+        /* Эффект при наведении мышки */
+        .split-item:hover .split-overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .split-item h3 {
+            position: relative;
+            z-index: 2;
+            font-size: 48px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .split-item span {
+            position: relative;
+            z-index: 2;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+        }
+
+        /* ----- ПОДВАЛ (ФУТЕР) ----- */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+        }
+
+        footer p {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            .logo { font-size: 24px; letter-spacing: 8px; }
+            .statement h2 { font-size: 32px; }
+            .portfolio-split { flex-direction: column; height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка с именем -->
+    <header>
+        <div class="logo">LUKEICHEVA</div>
+    </header>
+
+    <!-- Первый экран: Видео на фоне -->
+    <section class="hero">
+        <!-- 
+        ВАЖНО: В строке ниже замените 'showreel.mp4' на название вашего видео.
+        Атрибуты autoplay (автозапуск), muted (без звука), loop (зациклено), playsinline (для айфонов) 
+        -->
+        <video autoplay loop muted playsinline id="bg-video">
+            <source src="showreel.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <!-- Подпись под логотипом, если нужна. Можно удалить -->
+            <p class="hero-subtitle">Actress & Director</p>
+        </div>
+    </section>
+
+    <!-- Блок "Манифест" в стиле Dior -->
+    <section class="statement">
+        <h2>Искусство в каждом кадре.<br>Жизнь в каждой роли.</h2>
+        <p>Для меня кино и театр — это не просто игра. Это глубокое исследование человеческой души через призму актерского мастерства и режиссерского видения.</p>
+    </section>
+
+    <!-- Блок выбора направления (Актриса / Режиссер) -->
+    <section class="portfolio-split">
+        <!-- Левая часть -->
+        <a href="#" class="split-item actress-bg">
+            <div class="split-overlay"></div>
+            <h3>Актриса</h3>
+            <span>Смотреть портфолио</span>
+        </a>
+        
+        <!-- Правая часть -->
+        <a href="#" class="split-item director-bg">
+            <div class="split-overlay"></div>
+            <h3>Режиссер</h3>
+            <span>Смотреть проекты</span>
+        </a>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>LUKEICHEVA © 2024</p>
+        <p>По вопросам сотрудничества: agent@example.com</p>
+    </footer>
+
+</body>
+</html>
