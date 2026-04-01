@@ -7,14 +7,14 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         /* Базовые настройки и плавный скролл для меню */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { background-color: #fcfcfc; color: #111; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
-        h1, h2, h3, .logo { font-family: 'Cormorant Garamond', serif; }
+        h1, h2, h3, .logo { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
 
         /* ----- ШАПКА И МЕНЮ ----- */
         header {
@@ -69,21 +69,41 @@
             text-transform: uppercase; text-align: center;
         }
 
-        /* ----- БЛОК С ДВУМЯ ФОТОГРАФИЯМИ (Без текста) ----- */
+        /* ----- БЛОК "МАНИФЕСТ" (Цитата) ----- */
+        .statement {
+            padding: 120px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .statement h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .statement p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ----- БЛОК С ДВУМЯ ФОТОГРАФИЯМИ ----- */
         .photo-split {
             display: flex;
-            height: 80vh; /* Высота блока - 80% от высоты экрана */
+            height: 80vh; 
             width: 100%;
         }
 
         .photo-item {
-            flex: 1; /* Занимают по 50% ширины */
+            flex: 1; 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* Ссылки на ваши фото */
         .actress-photo { background-image: url('actress.jpg'); background-color: #222; }
         .director-photo { background-image: url('director.jpg'); background-color: #333; }
 
@@ -95,14 +115,13 @@
         section.content-block h2 { font-size: 36px; margin-bottom: 30px; letter-spacing: 2px; }
         section.content-block p { font-size: 15px; color: #555; line-height: 1.8; font-weight: 300; }
 
-        /* Мобильная адаптация */
+        /* ----- МОБИЛЬНАЯ АДАПТАЦИЯ ----- */
         @media (max-width: 768px) {
             .logo { font-size: 28px; letter-spacing: 8px; margin-bottom: 15px; }
             .main-menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .lang-switch { position: static; margin-bottom: 15px; }
             .hero-bottom-text { font-size: 13px; letter-spacing: 5px; }
-            
-            /* На телефоне фото встают друг под другом */
+            .statement h2 { font-size: 30px; }
             .photo-split { flex-direction: column; height: 100vh; }
         }
     </style>
@@ -131,6 +150,12 @@
         </video>
         <div class="video-overlay"></div>
         <div class="hero-bottom-text">ACTRESS & DIRECTOR</div>
+    </section>
+
+    <!-- БЛОК "МАНИФЕСТ" (Цитата) -->
+    <section class="statement">
+        <h2>Искусство в каждом кадре.<br>Жизнь в каждой роли.</h2>
+        <p>Для меня кино и театр — это не просто игра. Это глубокое исследование человеческой души через призму актерского мастерства и режиссерского видения.</p>
     </section>
 
     <!-- ДВЕ ФОТОГРАФИИ -->
